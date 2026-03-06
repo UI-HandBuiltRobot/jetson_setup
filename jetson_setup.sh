@@ -22,10 +22,8 @@ else
 fi
 
 # UPDATE AND UPGRADE SYSTEM
-
 sudo apt update -y
 sudo apt upgrade -y
-
 
 # INSTALL ROS2 JAZZY FOR 24.04
 echo -e "Install ROS2 Jazzy"
@@ -136,3 +134,12 @@ echo -e "Adding Hiwonder Udev Rules"
 sudo cp 99-hiwonder-arm.rules /etc/udev/rules.d/99-hiwonder-arm.rules
 sudo udevadm control --reload-rules # reload udev rules to apply changes
 sudo chmod +x test_xarm_connection.py # make test_xarm_connection.py executable for testing xarm connection
+
+# SETUP DEPLOY KEYS FOR GITHUB
+echo -e "Setting up SSH Keys for GitHub"
+ssh-keygen -t ed25519 -C "ME Hand Built Robot Deploy Key for Git Control" -f ~/.ssh/id_ed25519 -N "" # generate new SSH key pair with empty passphrase
+eval "$(ssh-agent -s)" # start the ssh-agent in the background
+ssh-add ~/.ssh/id_ed25519 # add the private key to the ssh-agent
+git config --global user.name "$USER" # set global git username
+git config --global user.email "$USER@example.com" # set global git email
+git config --global init.defaultBranch main # set default git branch name to main
