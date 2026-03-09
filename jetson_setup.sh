@@ -48,7 +48,8 @@ else
     chmod -R u+w "$ROS2_INSTALL_FOLDER_PATH"
     rm -rv "$ROS2_INSTALL_FOLDER_PATH" #remove install scripts to save space
 fi
-
+# Navigate back to workspace directory
+cd $WS_DIR
 # INSTALL ROS PACKAGES
 echo -e "Installing ROS2 Packages"
 sudo apt install ros-$ROS_DISTRO-vision-msgs -y
