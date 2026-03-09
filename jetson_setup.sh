@@ -130,8 +130,8 @@ sudo apt install firefox -y # install firefox for browsing and downloading files
 sudo apt install guvcview -y # install guvcview for testing and adjusting camera settings
 
 # ADD UDEV RULES FOR HIWONDER ARM
-echo -e "Adding Hiwonder Udev Rules"
-sudo cp 99-hiwonder-arm.rules /etc/udev/rules.d/99-hiwonder-arm.rules
+echo -e "Adding Hiwonder x-Arm Udev Rules"
+sudo cp 99-xarm.rules /etc/udev/rules.d/99-xarm.rules
 sudo udevadm control --reload-rules # reload udev rules to apply changes
 sudo chmod +x test_xarm_connection.py # make test_xarm_connection.py executable for testing xarm connection
 
